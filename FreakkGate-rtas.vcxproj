@@ -16,7 +16,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{8F427C1E-B580-4793-BEAC-F2CFEFA003F5}</ProjectGuid>
-    <RootNamespace>FreakkComp-rtas</RootNamespace>
+    <RootNamespace>FreakkGate-rtas</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Tracer|Win32'" Label="Configuration">
@@ -39,15 +39,15 @@
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Tracer|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="FreakkComp.props" />
+    <Import Project="FreakkGate.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="FreakkComp.props" />
+    <Import Project="FreakkGate.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="FreakkComp.props" />
+    <Import Project="FreakkGate.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
@@ -113,7 +113,7 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>libcmt.lib;msvprt.lib</IgnoreSpecificDefaultLibraries>
-      <ModuleDefinitionFile>FreakkComp-rtas.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>FreakkGate-rtas.def</ModuleDefinitionFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(RTAS_PLUGINS_PATH)\$(TargetName).pdb</ProgramDatabaseFile>
       <GenerateMapFile>true</GenerateMapFile>
@@ -181,7 +181,7 @@ copy /Y "$(TargetPath)".rsr "$(RTAS_PLUGINS_PATH)\$(BINARY_NAME).dpm.rsr"
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>libcmt.lib;msvprt.lib</IgnoreSpecificDefaultLibraries>
-      <ModuleDefinitionFile>FreakkComp-rtas.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>FreakkGate-rtas.def</ModuleDefinitionFile>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <ImportLibrary>$(IntDir)$(TargetName).lib</ImportLibrary>
@@ -246,7 +246,7 @@ copy /Y "$(TargetPath)".rsr "$(RTAS_PLUGINS_PATH)\$(BINARY_NAME).dpm.rsr"
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>libcmt.lib;msvprt.lib</IgnoreSpecificDefaultLibraries>
-      <ModuleDefinitionFile>FreakkComp-rtas.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>FreakkGate-rtas.def</ModuleDefinitionFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(RTAS_PLUGINS_PATH)\$(TargetName).pdb</ProgramDatabaseFile>
       <GenerateMapFile>true</GenerateMapFile>
@@ -302,7 +302,7 @@ copy /Y "$(TargetPath)".rsr "$(RTAS_PLUGINS_PATH)\$(BINARY_NAME).dpm.rsr"
     <ClInclude Include="..\..\WDL\IPlug\RTAS\IPlugProcessRTAS.h" />
     <ClInclude Include="..\..\WDL\IPlug\RTAS\ProcessInterface.h" />
     <ClInclude Include="..\..\WDL\IPlug\RTAS\digicode.h" />
-    <ClInclude Include="FreakkComp.h" />
+    <ClInclude Include="FreakkGate.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
@@ -325,13 +325,13 @@ copy /Y "$(TargetPath)".rsr "$(RTAS_PLUGINS_PATH)\$(BINARY_NAME).dpm.rsr"
     <ClCompile Include="..\..\WDL\IPlug\RTAS\digicode1.cpp" />
     <ClCompile Include="..\..\WDL\IPlug\RTAS\digicode2.cpp" />
     <ClCompile Include="..\..\WDL\IPlug\RTAS\digicode3.cpp" />
-    <ClCompile Include="FreakkComp.cpp" />
+    <ClCompile Include="FreakkGate.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="FreakkComp-rtas.def" />
+    <None Include="FreakkGate-rtas.def" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="FreakkComp.rc" />
+    <ResourceCompile Include="FreakkGate.rc" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\PT9_SDK\AlturaPorts\TDMPlugIns\PlugInLibrary\WinBuild\PlugInLib.vcxproj">

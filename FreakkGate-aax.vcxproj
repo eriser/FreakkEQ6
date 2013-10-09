@@ -28,7 +28,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{DC4B5920-933D-4C82-B842-F34431D55A93}</ProjectGuid>
-    <RootNamespace>FreakkComp-aax</RootNamespace>
+    <RootNamespace>FreakkGate-aax</RootNamespace>
     <Keyword>ManagedCProj</Keyword>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -61,27 +61,27 @@
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="FreakkComp.props" />
+    <Import Project="FreakkGate.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Tracer|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="FreakkComp.props" />
+    <Import Project="FreakkGate.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="FreakkComp.props" />
+    <Import Project="FreakkGate.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="FreakkComp.props" />
+    <Import Project="FreakkGate.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Tracer|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="FreakkComp.props" />
+    <Import Project="FreakkGate.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="FreakkComp.props" />
+    <Import Project="FreakkGate.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
@@ -127,7 +127,7 @@ CALL ..\..\AAX_SDK\Utilities\CreatePackage.bat $(OutDir) ..\..\AAX_SDK\Utilities
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <PrecompiledHeaderOutputFile>$(IntDir)FreakkComp.pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)FreakkGate.pch</PrecompiledHeaderOutputFile>
       <BrowseInformation>
       </BrowseInformation>
       <WarningLevel>Level3</WarningLevel>
@@ -290,7 +290,7 @@ CALL ..\..\AAX_SDK\Utilities\CreatePackage.bat $(OutDir) ..\..\AAX_SDK\Utilities
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <PrecompiledHeaderOutputFile>$(IntDir)FreakkComp.pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)FreakkGate.pch</PrecompiledHeaderOutputFile>
       <BrowseInformation>true</BrowseInformation>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -451,7 +451,7 @@ CALL ..\..\AAX_SDK\Utilities\CreatePackage.bat $(OutDir) ..\..\AAX_SDK\Utilities
     <ClCompile Include="..\..\WDL\IPlug\AAX\AAX_CIPlugParameters.cpp" />
     <ClCompile Include="..\..\WDL\IPlug\IPlugAAX.cpp" />
     <ClCompile Include="..\..\WDL\IPlug\AAX\IPlugAAX_Describe.cpp" />
-    <ClCompile Include="FreakkComp.cpp" />
+    <ClCompile Include="FreakkGate.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuildStep Include="..\..\AAX_SDK\Libs\Release\AAXLibrary.lib">
@@ -501,11 +501,11 @@ CALL ..\..\AAX_SDK\Utilities\CreatePackage.bat $(OutDir) ..\..\AAX_SDK\Utilities
     <ClInclude Include="..\..\WDL\IPlug\Log.h" />
     <ClInclude Include="..\..\WDL\IPlug\AAX\AAX_CIPlugParameters.h" />
     <ClInclude Include="..\..\WDL\IPlug\IPlugAAX.h" />
-    <ClInclude Include="FreakkComp.h" />
+    <ClInclude Include="FreakkGate.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="FreakkComp.rc" />
+    <ResourceCompile Include="FreakkGate.rc" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="..\..\AAX_SDK\Libs\Debug\AAXLibrary_D.lib">

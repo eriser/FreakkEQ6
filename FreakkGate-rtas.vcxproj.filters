@@ -113,7 +113,7 @@
     <ClInclude Include="..\..\WDL\IPlug\RTAS\digicode.h">
       <Filter>IPlug\RTAS\include</Filter>
     </ClInclude>
-    <ClInclude Include="FreakkComp.h" />
+    <ClInclude Include="FreakkGate.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="..\..\WDL\IPlug\RTAS\IPlugProcessAS.h">
       <Filter>IPlug\RTAS</Filter>
@@ -174,15 +174,15 @@
     <ClCompile Include="..\..\WDL\IPlug\RTAS\digicode3.cpp">
       <Filter>IPlug\RTAS\include</Filter>
     </ClCompile>
-    <ClCompile Include="FreakkComp.cpp" />
+    <ClCompile Include="FreakkGate.cpp" />
     <ClCompile Include="..\..\WDL\IPlug\RTAS\IPlugProcessAS.cpp">
       <Filter>IPlug\RTAS</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="FreakkComp-rtas.def" />
+    <None Include="FreakkGate-rtas.def" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="FreakkComp.rc" />
+    <ResourceCompile Include="FreakkGate.rc" />
   </ItemGroup>
 </Project>

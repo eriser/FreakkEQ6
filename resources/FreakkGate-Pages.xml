@@ -2,7 +2,7 @@
 <PageTables vers='6.4.0.91'>
 	<PageTableLayouts>
 		<Plugin manID='Acme' prodID='Ipef' plugID='Ipef'>
-			<Desc>FreakkComp by Freakk.</Desc>
+			<Desc>FreakkGate by Freakk.</Desc>
 			<Layout>PageTable 1</Layout>
 		</Plugin><!--manID='Acme' prodID='Ipef' plugID='Ipef'-->
 		<PTLayout name='PageTable 1'>
@@ -132,7 +132,7 @@
 			</TDM>
 			<RTAS>
 				<PluginID manID='Acme' prodID='Ipef' plugID='Ipef'>
-					<MenuStr>RTAS: FreakkComp</MenuStr>
+					<MenuStr>RTAS: FreakkGate</MenuStr>
 				</PluginID><!--manID='Acme' prodID='Ipef' plugID='Ipef'-->
 			</RTAS>
 		</PluginList>

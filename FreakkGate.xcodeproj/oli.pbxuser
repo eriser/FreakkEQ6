@@ -233,8 +233,8 @@
 	};
 	4F0A62A11678FE940094C4B6 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = 4FCF15AF133124D1009A6277 /* FreakkComp.xcconfig */;
-		name = "FreakkComp.xcconfig: 32";
+		fRef = 4FCF15AF133124D1009A6277 /* FreakkGate.xcconfig */;
+		name = "FreakkGate.xcconfig: 32";
 		rLen = 0;
 		rLoc = 686;
 		rType = 0;
@@ -441,8 +441,8 @@
 	};
 	4F49E9D9167920A70007C6FF /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = 52FBBED20D0CF13D001C8B8A /* FreakkComp.h */;
-		name = "FreakkComp.h: 15";
+		fRef = 52FBBED20D0CF13D001C8B8A /* FreakkGate.h */;
+		name = "FreakkGate.h: 15";
 		rLen = 0;
 		rLoc = 329;
 		rType = 0;
@@ -451,8 +451,8 @@
 	};
 	4F49E9DA167920A70007C6FF /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = 52FBBED00D0CF139001C8B8A /* FreakkComp.cpp */;
-		name = "FreakkComp.cpp: 25";
+		fRef = 52FBBED00D0CF139001C8B8A /* FreakkGate.cpp */;
+		name = "FreakkGate.cpp: 25";
 		rLen = 1;
 		rLoc = 409;
 		rType = 0;
@@ -1441,7 +1441,7 @@
 			YES,
 		);
 		argumentStrings = (
-			FreakkComp.vst3,
+			FreakkGate.vst3,
 		);
 		autoAttachOnCrash = 1;
 		breakpointsEnabled = 0;
@@ -1519,7 +1519,7 @@
 	4FB600121567CB0A0020189A /* AAX */ = {
 		activeExec = 0;
 	};
-	4FCF15AF133124D1009A6277 /* FreakkComp.xcconfig */ = {
+	4FCF15AF133124D1009A6277 /* FreakkGate.xcconfig */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1271, 819}}";
 			sepNavSelRange = "{686, 0}";
@@ -1719,7 +1719,7 @@
 			sepNavVisRange = "{0, 1434}";
 		};
 	};
-	4FD290A8137C34D700CEBE7E /* FreakkComp.icns */ = {
+	4FD290A8137C34D700CEBE7E /* FreakkGate.icns */ = {
 		uiCtxt = {
 			sepNavWindowFrame = "{{38, 92}, {1416, 1060}}";
 		};
@@ -2012,14 +2012,14 @@
 			sepNavVisRange = "{0, 2094}";
 		};
 	};
-	526F9C010D7DC7D700562CF8 /* FreakkComp.exp */ = {
+	526F9C010D7DC7D700562CF8 /* FreakkGate.exp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1120, 501}}";
 			sepNavSelRange = "{38, 0}";
 			sepNavVisRange = "{0, 42}";
 		};
 	};
-	52FBBED00D0CF139001C8B8A /* FreakkComp.cpp */ = {
+	52FBBED00D0CF139001C8B8A /* FreakkGate.cpp */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1271, 1014}}";
 			sepNavSelRange = "{409, 1}";
@@ -2027,7 +2027,7 @@
 			sepNavWindowFrame = "{{15, 109}, {1089, 914}}";
 		};
 	};
-	52FBBED20D0CF13D001C8B8A /* FreakkComp.h */ = {
+	52FBBED20D0CF13D001C8B8A /* FreakkGate.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1271, 644}}";
 			sepNavSelRange = "{329, 0}";

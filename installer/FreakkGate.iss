@@ -1,13 +1,13 @@
 [Setup]
-AppName=FreakkComp
+AppName=FreakkGate
 AppVersion=1.0.0
-DefaultDirName={pf}\FreakkComp
-DefaultGroupName=FreakkComp
+DefaultDirName={pf}\FreakkGate
+DefaultGroupName=FreakkGate
 Compression=lzma2
 SolidCompression=yes
 OutputDir=.\
 ArchitecturesInstallIn64BitMode=x64
-OutputBaseFilename=FreakkComp Installer
+OutputBaseFilename=FreakkGate Installer
 LicenseFile=license.rtf
 SetupLogging=yes
 
@@ -26,32 +26,32 @@ Name: "aax_32"; Description: "32-bit AAX Plugin (.aaxplugin)"; Types: full custo
 Name: "manual"; Description: "User guide"; Types: full custom; Flags: fixed
 
 [Files]
-Source: "..\build-win\app\Win32\bin\FreakkComp.exe"; DestDir: "{app}"; Check: not Is64BitInstallMode; Components:app; Flags: ignoreversion;
-Source: "..\build-win\app\x64\bin\FreakkComp.exe"; DestDir: "{app}"; Check: Is64BitInstallMode; Components:app; Flags: ignoreversion;
+Source: "..\build-win\app\Win32\bin\FreakkGate.exe"; DestDir: "{app}"; Check: not Is64BitInstallMode; Components:app; Flags: ignoreversion;
+Source: "..\build-win\app\x64\bin\FreakkGate.exe"; DestDir: "{app}"; Check: Is64BitInstallMode; Components:app; Flags: ignoreversion;
 
-Source: "..\build-win\vst2\Win32\bin\FreakkComp.dll"; DestDir: {code:GetVST2Dir_32}; Check: not Is64BitInstallMode; Components:vst2_32; Flags: ignoreversion;
-Source: "..\build-win\vst2\Win32\bin\FreakkComp.dll"; DestDir: {code:GetVST2Dir_32}; Check: Is64BitInstallMode; Components:vst2_32; Flags: ignoreversion;
-Source: "..\build-win\vst2\x64\bin\FreakkComp.dll"; DestDir: {code:GetVST2Dir_64}; Check: Is64BitInstallMode; Components:vst2_64; Flags: ignoreversion;
+Source: "..\build-win\vst2\Win32\bin\FreakkGate.dll"; DestDir: {code:GetVST2Dir_32}; Check: not Is64BitInstallMode; Components:vst2_32; Flags: ignoreversion;
+Source: "..\build-win\vst2\Win32\bin\FreakkGate.dll"; DestDir: {code:GetVST2Dir_32}; Check: Is64BitInstallMode; Components:vst2_32; Flags: ignoreversion;
+Source: "..\build-win\vst2\x64\bin\FreakkGate.dll"; DestDir: {code:GetVST2Dir_64}; Check: Is64BitInstallMode; Components:vst2_64; Flags: ignoreversion;
 
-Source: "..\build-win\vst3\Win32\bin\FreakkComp.vst3"; DestDir: "{cf}\VST3\"; Check: not Is64BitInstallMode; Components:vst3_32; Flags: ignoreversion;
-Source: "..\build-win\vst3\Win32\bin\FreakkComp.vst3"; DestDir: "{cf32}\VST3\"; Check: Is64BitInstallMode; Components:vst3_32; Flags: ignoreversion;
-Source: "..\build-win\vst3\x64\bin\FreakkComp.vst3"; DestDir: "{cf64}\VST3\"; Check: Is64BitInstallMode; Components:vst3_64; Flags: ignoreversion;
+Source: "..\build-win\vst3\Win32\bin\FreakkGate.vst3"; DestDir: "{cf}\VST3\"; Check: not Is64BitInstallMode; Components:vst3_32; Flags: ignoreversion;
+Source: "..\build-win\vst3\Win32\bin\FreakkGate.vst3"; DestDir: "{cf32}\VST3\"; Check: Is64BitInstallMode; Components:vst3_32; Flags: ignoreversion;
+Source: "..\build-win\vst3\x64\bin\FreakkGate.vst3"; DestDir: "{cf64}\VST3\"; Check: Is64BitInstallMode; Components:vst3_64; Flags: ignoreversion;
 
-Source: "..\build-win\rtas\bin\FreakkComp.dpm"; DestDir: "{cf32}\Digidesign\DAE\Plug-Ins\"; Components:rtas_32; Flags: ignoreversion;
-Source: "..\build-win\rtas\bin\FreakkComp.dpm.rsr"; DestDir: "{cf32}\Digidesign\DAE\Plug-Ins\"; Components:rtas_32; Flags: ignoreversion;
+Source: "..\build-win\rtas\bin\FreakkGate.dpm"; DestDir: "{cf32}\Digidesign\DAE\Plug-Ins\"; Components:rtas_32; Flags: ignoreversion;
+Source: "..\build-win\rtas\bin\FreakkGate.dpm.rsr"; DestDir: "{cf32}\Digidesign\DAE\Plug-Ins\"; Components:rtas_32; Flags: ignoreversion;
 
-Source: "..\build-win\aax\bin\FreakkComp.aaxplugin\*.*"; DestDir: "{cf32}\Avid\Audio\Plug-Ins\FreakkComp.aaxplugin\"; Components:aax_32; Flags: ignoreversion recursesubdirs;
+Source: "..\build-win\aax\bin\FreakkGate.aaxplugin\*.*"; DestDir: "{cf32}\Avid\Audio\Plug-Ins\FreakkGate.aaxplugin\"; Components:aax_32; Flags: ignoreversion recursesubdirs;
 
-Source: "..\manual\FreakkComp_manual.pdf"; DestDir: "{app}"
+Source: "..\manual\FreakkGate_manual.pdf"; DestDir: "{app}"
 Source: "changelog.txt"; DestDir: "{app}"
 Source: "readmewin.rtf"; DestDir: "{app}"; DestName: "readme.rtf"; Flags: isreadme
 
 [Icons]
-Name: "{group}\FreakkComp"; Filename: "{app}\FreakkComp.exe"
-Name: "{group}\User guide"; Filename: "{app}\FreakkComp_manual.pdf"
+Name: "{group}\FreakkGate"; Filename: "{app}\FreakkGate.exe"
+Name: "{group}\User guide"; Filename: "{app}\FreakkGate_manual.pdf"
 Name: "{group}\Changelog"; Filename: "{app}\changelog.txt"
 ;Name: "{group}\readme"; Filename: "{app}\readme.rtf"
-Name: "{group}\Uninstall FreakkComp"; Filename: "{app}\unins000.exe"
+Name: "{group}\Uninstall FreakkGate"; Filename: "{app}\unins000.exe"
 
 ;[Dirs] 
 ;Name: {cf}\Digidesign\DAE\Plugins\

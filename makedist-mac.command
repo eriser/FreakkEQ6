@@ -25,34 +25,34 @@ FULL_VERSION=$MAJOR_VERSION"."$MINOR_VERSION"."$BUG_FIX
 # work out the paths to the bundles
 
 VST2=`echo | grep VST_FOLDER ../../common.xcconfig`
-VST2=${VST2//\VST_FOLDER = }/FreakkComp.vst
+VST2=${VST2//\VST_FOLDER = }/FreakkGate.vst
 
 VST3=`echo | grep VST3_FOLDER ../../common.xcconfig`
-VST3=${VST3//\VST3_FOLDER = }/FreakkComp.vst3
+VST3=${VST3//\VST3_FOLDER = }/FreakkGate.vst3
 
 AU=`echo | grep AU_FOLDER ../../common.xcconfig`
-AU=${AU//\AU_FOLDER = }/FreakkComp.component
+AU=${AU//\AU_FOLDER = }/FreakkGate.component
 
 APP=`echo | grep APP_FOLDER ../../common.xcconfig`
-APP=${APP//\APP_FOLDER = }/FreakkComp.app
+APP=${APP//\APP_FOLDER = }/FreakkGate.app
 
 # Dev build folder
 RTAS=`echo | grep RTAS_FOLDER ../../common.xcconfig`
-RTAS=${RTAS//\RTAS_FOLDER = }/FreakkComp.dpm
-RTAS_FINAL="/Library/Application Support/Digidesign/Plug-Ins/FreakkComp.dpm"
+RTAS=${RTAS//\RTAS_FOLDER = }/FreakkGate.dpm
+RTAS_FINAL="/Library/Application Support/Digidesign/Plug-Ins/FreakkGate.dpm"
 
 # Dev build folder
 AAX=`echo | grep AAX_FOLDER ../../common.xcconfig`
-AAX=${AAX//\AAX_FOLDER = }/FreakkComp.aaxplugin
-AAX_FINAL="/Library/Application Support/Avid/Audio/Plug-Ins/FreakkComp.aaxplugin"
+AAX=${AAX//\AAX_FOLDER = }/FreakkGate.aaxplugin
+AAX_FINAL="/Library/Application Support/Avid/Audio/Plug-Ins/FreakkGate.aaxplugin"
 
-PKG='installer/build-mac/FreakkComp Installer.pkg'
-PKG_US='installer/build-mac/FreakkComp Installer.unsigned.pkg'
+PKG='installer/build-mac/FreakkGate Installer.pkg'
+PKG_US='installer/build-mac/FreakkGate Installer.unsigned.pkg'
 
 CERT_ID=`echo | grep CERTIFICATE_ID ../../common.xcconfig`
 CERT_ID=${CERT_ID//\CERTIFICATE_ID = }
 
-echo "making FreakkComp version $FULL_VERSION mac distribution..."
+echo "making FreakkGate version $FULL_VERSION mac distribution..."
 echo ""
 
 #---------------------------------------------------------------------------------------------------------
@@ -116,8 +116,8 @@ fi
 #---------------------------------------------------------------------------------------------------------
 
 # build xcode project. Change target to build individual formats 
-xcodebuild -project FreakkComp.xcodeproj -xcconfig FreakkComp.xcconfig -target "All" -configuration Release 2> ./build-mac.log
-#xcodebuild -project FreakkComp-ios.xcodeproj -xcconfig FreakkComp.xcconfig -target "IOSAPP" -configuration Release
+xcodebuild -project FreakkGate.xcodeproj -xcconfig FreakkGate.xcconfig -target "All" -configuration Release 2> ./build-mac.log
+#xcodebuild -project FreakkGate-ios.xcodeproj -xcconfig FreakkGate.xcconfig -target "IOSAPP" -configuration Release
 
 if [ -s build-mac.log ]
 then
@@ -134,11 +134,11 @@ fi
 #icon stuff - http://maxao.free.fr/telechargements/setfileicon.gz
 echo "setting icons"
 echo ""
-setfileicon resources/FreakkComp.icns $AU
-setfileicon resources/FreakkComp.icns $VST2
-setfileicon resources/FreakkComp.icns $VST3
-setfileicon resources/FreakkComp.icns "${RTAS}"
-setfileicon resources/FreakkComp.icns "${AAX}"
+setfileicon resources/FreakkGate.icns $AU
+setfileicon resources/FreakkGate.icns $VST2
+setfileicon resources/FreakkGate.icns $VST3
+setfileicon resources/FreakkGate.icns "${RTAS}"
+setfileicon resources/FreakkGate.icns "${AAX}"
 
 #---------------------------------------------------------------------------------------------------------
 
@@ -151,20 +151,20 @@ echo "copying AAX bundle from 3PDev to main AAX folder"
 sudo cp -p -R "${AAX}" "${AAX_FINAL}"
 
 echo "code sign AAX binary"
-sudo ashelper -f "${AAX_FINAL}/Contents/MacOS/FreakkComp" -l ../../../Certificates/aax.crt -k ../../../Certificates/aax.key -o "${AAX_FINAL}/Contents/MacOS/FreakkComp"
+sudo ashelper -f "${AAX_FINAL}/Contents/MacOS/FreakkGate" -l ../../../Certificates/aax.crt -k ../../../Certificates/aax.key -o "${AAX_FINAL}/Contents/MacOS/FreakkGate"
 #---------------------------------------------------------------------------------------------------------
 
 #appstore stuff
 
 # echo "code signing app for appstore"
 # echo ""
-# codesign -f -s "3rd Party Mac Developer Application: ""${CERT_ID}" $APP --entitlements resources/FreakkComp.entitlements
+# codesign -f -s "3rd Party Mac Developer Application: ""${CERT_ID}" $APP --entitlements resources/FreakkGate.entitlements
 #  
 # echo "building pkg for app store"
 # productbuild \
 #      --component $APP /Applications \
 #      --sign "3rd Party Mac Developer Installer: ""${CERT_ID}" \
-#      --product "/Applications/FreakkComp.app/Contents/Info.plist" installer/FreakkComp.pkg
+#      --product "/Applications/FreakkGate.app/Contents/Info.plist" installer/FreakkGate.pkg
 
 #---------------------------------------------------------------------------------------------------------
 
@@ -177,11 +177,11 @@ sudo ashelper -f "${AAX_FINAL}/Contents/MacOS/FreakkComp" -l ../../../Certificat
 #---------------------------------------------------------------------------------------------------------
 
 # installer, uses Packages http://s.sudre.free.fr/Software/Packages/about.html
-sudo sudo rm -R -f installer/FreakkComp-mac.dmg
+sudo sudo rm -R -f installer/FreakkGate-mac.dmg
 
 echo "building installer"
 echo ""
-packagesbuild installer/FreakkComp.pkgproj
+packagesbuild installer/FreakkGate.pkgproj
 
 #echo "code sign installer for Gatekeeper on 10.8"
 #echo ""
@@ -191,7 +191,7 @@ packagesbuild installer/FreakkComp.pkgproj
 #rm -R -f "${PKG_US}"
 
 #set installer icon
-setfileicon resources/FreakkComp.icns "${PKG}"
+setfileicon resources/FreakkGate.icns "${PKG}"
 
 #---------------------------------------------------------------------------------------------------------
 
@@ -200,19 +200,19 @@ setfileicon resources/FreakkComp.icns "${PKG}"
 echo "building dmg"
 echo ""
 
-if [ -d installer/FreakkComp.dmgCanvas ]
+if [ -d installer/FreakkGate.dmgCanvas ]
 then
-  dmgcanvas installer/FreakkComp.dmgCanvas installer/FreakkComp-mac.dmg
+  dmgcanvas installer/FreakkGate.dmgCanvas installer/FreakkGate-mac.dmg
 else
-  hdiutil create installer/FreakkComp.dmg -srcfolder installer/build-mac/ -ov -anyowners -volname FreakkComp
+  hdiutil create installer/FreakkGate.dmg -srcfolder installer/build-mac/ -ov -anyowners -volname FreakkGate
   
-  if [ -f installer/FreakkComp-mac.dmg ]
+  if [ -f installer/FreakkGate-mac.dmg ]
   then
-   rm -f installer/FreakkComp-mac.dmg
+   rm -f installer/FreakkGate-mac.dmg
   fi
   
-  hdiutil convert installer/FreakkComp.dmg -format UDZO -o installer/FreakkComp-mac.dmg
-  sudo rm -R -f installer/FreakkComp.dmg
+  hdiutil convert installer/FreakkGate.dmg -format UDZO -o installer/FreakkGate-mac.dmg
+  sudo rm -R -f installer/FreakkGate.dmg
 fi
 
 sudo rm -R -f installer/build-mac/
@@ -222,16 +222,16 @@ sudo rm -R -f installer/build-mac/
 
 # echo "copying binaries..."
 # echo ""
-# cp -R $AU installer/dist/FreakkComp.component
-# cp -R $VST2 installer/dist/FreakkComp.vst
-# cp -R $VST3 installer/dist/FreakkComp.vst3
-# cp -R $RTAS installer/dist/FreakkComp.dpm
-# cp -R $AAX installer/dist/FreakkComp.aaxplugin
-# cp -R $APP installer/dist/FreakkComp.app
+# cp -R $AU installer/dist/FreakkGate.component
+# cp -R $VST2 installer/dist/FreakkGate.vst
+# cp -R $VST3 installer/dist/FreakkGate.vst3
+# cp -R $RTAS installer/dist/FreakkGate.dpm
+# cp -R $AAX installer/dist/FreakkGate.aaxplugin
+# cp -R $APP installer/dist/FreakkGate.app
 # 
 # echo "zipping binaries..."
 # echo ""
-# ditto -c -k installer/dist installer/FreakkComp-mac.zip
+# ditto -c -k installer/dist installer/FreakkGate-mac.zip
 # rm -R installer/dist
 
 #---------------------------------------------------------------------------------------------------------

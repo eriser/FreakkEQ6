@@ -1,19 +1,19 @@
 #define PLUG_MFR "Freakk"
-#define PLUG_NAME "FreakkComp"
+#define PLUG_NAME "FreakkGate"
 
-#define PLUG_CLASS_NAME FreakkComp
+#define PLUG_CLASS_NAME FreakkGate
 
 #define BUNDLE_MFR "Freakk"
-#define BUNDLE_NAME "FreakkComp"
+#define BUNDLE_NAME "FreakkGate"
 
-#define PLUG_ENTRY FreakkComp_Entry
-#define PLUG_VIEW_ENTRY FreakkComp_ViewEntry
+#define PLUG_ENTRY FreakkGate_Entry
+#define PLUG_VIEW_ENTRY FreakkGate_ViewEntry
 
-#define PLUG_ENTRY_STR "FreakkComp_Entry"
-#define PLUG_VIEW_ENTRY_STR "FreakkComp_ViewEntry"
+#define PLUG_ENTRY_STR "FreakkGate_Entry"
+#define PLUG_VIEW_ENTRY_STR "FreakkGate_ViewEntry"
 
-#define VIEW_CLASS FreakkComp_View
-#define VIEW_CLASS_STR "FreakkComp_View"
+#define VIEW_CLASS FreakkGate_View
+#define VIEW_CLASS_STR "FreakkGate_View"
 
 // Format        0xMAJR.MN.BG - in HEX! so version 10.1.5 would be 0x000A0105
 #define PLUG_VER 0x00010000
@@ -21,9 +21,9 @@
 
 // http://service.steinberg.de/databases/plugin.nsf/plugIn?openForm
 // 4 chars, single quotes. At least one capital letter
-#define PLUG_UNIQUE_ID 'Ipef'
+#define PLUG_UNIQUE_ID 'FG01'
 // make sure this is not the same as BUNDLE_MFR
-#define PLUG_MFR_ID 'Acme'
+#define PLUG_MFR_ID 'KF01'
 
 // ProTools stuff
 
@@ -34,7 +34,7 @@
 #endif
 
 #define PLUG_MFR_PT "Freakk\nFreakk\nAcme"
-#define PLUG_NAME_PT "FreakkComp\nIPEF"
+#define PLUG_NAME_PT "FreakkGate\nIPEF"
 #define PLUG_TYPE_PT "Effect"
 #define PLUG_DOES_AUDIOSUITE 1
 

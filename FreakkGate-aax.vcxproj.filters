@@ -51,7 +51,7 @@
     <ClCompile Include="..\..\WDL\IPlug\AAX\IPlugAAX_Describe.cpp">
       <Filter>IPlug\AAX</Filter>
     </ClCompile>
-    <ClCompile Include="FreakkComp.cpp" />
+    <ClCompile Include="FreakkGate.cpp" />
     <ClCompile Include="..\..\AAX_SDK\Interfaces\AAX_Exports.cpp">
       <Filter>Libs</Filter>
     </ClCompile>
@@ -111,11 +111,11 @@
     <ClInclude Include="..\..\WDL\IPlug\IPlugAAX.h">
       <Filter>IPlug\AAX</Filter>
     </ClInclude>
-    <ClInclude Include="FreakkComp.h" />
+    <ClInclude Include="FreakkGate.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="FreakkComp.rc" />
+    <ResourceCompile Include="FreakkGate.rc" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="..\..\AAX_SDK\Libs\Debug\AAXLibrary_x64_D.lib">

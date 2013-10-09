@@ -43,7 +43,7 @@
       <Filter>app</Filter>
     </ClInclude>
     <ClInclude Include="resource.h" />
-    <ClInclude Include="FreakkComp.h" />
+    <ClInclude Include="FreakkGate.h" />
     <ClInclude Include="..\..\WDL\IPlug\IPlugStandalone.h">
       <Filter>app</Filter>
     </ClInclude>
@@ -71,12 +71,12 @@
     <ClCompile Include="app_wrapper\app_main.cpp">
       <Filter>app</Filter>
     </ClCompile>
-    <ClCompile Include="FreakkComp.cpp" />
+    <ClCompile Include="FreakkGate.cpp" />
     <ClCompile Include="..\..\WDL\IPlug\IPlugStandalone.cpp">
       <Filter>app</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="FreakkComp.rc" />
+    <ResourceCompile Include="FreakkGate.rc" />
   </ItemGroup>
 </Project>
