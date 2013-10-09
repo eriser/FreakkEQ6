@@ -15,8 +15,7 @@ const int kNumPrograms = 1;
 
 enum EParams
 {
-  kGain = 0,
-  kThreshold,
+  kThreshold = 0,
   kAttack,
   kRelease,
   kNumParams
@@ -57,10 +56,9 @@ FreakkGate::FreakkGate(IPlugInstanceInfo instanceInfo)
   releaseFactor = 1;
   sampleRate = GetSampleRate();
   //arguments are: name, defaultVal, minVal, maxVal, step, label
-  GetParam(kGain)->InitDouble("Gain", 100., 0., 400.0, 1, "%");
   GetParam(kThreshold)->InitDouble("Threshold", 50., 0., 100., 1., "");
   GetParam(kAttack)->InitDouble("Attack", 50., 0., 1000.0, 1, "ms");
-  GetParam(kRelease)->InitDouble("Release", 100., 0., 100.0, 1, "ms");
+  GetParam(kRelease)->InitDouble("Release", 100., 0., 1000.0, 1, "ms");
   //MakePreset("preset 1", ... );
   MakeDefaultPreset((char *) "-", kNumPrograms);
   SetAttack();
@@ -75,13 +73,14 @@ void FreakkGate::ProcessDoubleReplacing(double** inputs, double** outputs, int n
 {
   // Mutex is already locked for us.
 
-  double logThreshold = log10 ( abs(mThreshold) ) ;
+  // double logThreshold = log10 ( abs(mThreshold) ) ; // work with decibels
 
   /*
   double peak1 = Peak(inputs[0], nFrames);
   double peak2 = Peak(inputs[1], nFrames);
   double peak = (peak1 >= peak2) ? peak1 : peak2 ;
   */
+
   double rms1 = rms(inputs[0], nFrames);
   double rms2 = rms(inputs[1], nFrames);
   double rmsFrame;
@@ -90,7 +89,7 @@ void FreakkGate::ProcessDoubleReplacing(double** inputs, double** outputs, int n
   else rmsFrame = rms2;
 
   if( rmsFrame < mThreshold ){
-	if(status == BYPASS){
+	if(status == BYPASS || status == RELEASE){
 		status = ATTACK;
 		SetAttack();
 	}
@@ -101,11 +100,15 @@ void FreakkGate::ProcessDoubleReplacing(double** inputs, double** outputs, int n
 	 }
   }
   else {
-	  status = BYPASS;
-    for (int s = 0; s < nFrames; ++s) {
-		outputs[0][s] = inputs[0][s] * mGain;
-		outputs[1][s] = inputs[1][s] * mGain;
+	if(status == MUTE || status == ATTACK){
+		status = RELEASE;
+		SetRelease();
 	}
+	 for (int s = 0; s < nFrames; ++s) {
+			 if(status == RELEASE) Release();
+			 outputs[0][s] = inputs[0][s] * releaseFactor ;
+			 outputs[1][s] = inputs[1][s] * releaseFactor ;
+	 }
   }
 
 }
@@ -122,9 +125,6 @@ void FreakkGate::OnParamChange(int paramIdx)
 
   switch (paramIdx)
   {
-    case kGain:
-      mGain = GetParam(kGain)->Value() / 100.;
-      break;
 	case kThreshold:
       mThreshold = GetParam(kThreshold)->Value() / 100.;
       break;
@@ -164,7 +164,13 @@ void FreakkGate::Attack()
 
 void FreakkGate::Release()
 {
-	return ;
+	if(releaseCounter < 0){
+		releaseFactor = 1;
+		status = BYPASS;
+		return ;
+	}
+	releaseFactor = 1 - ((double)releaseCounter) / releaseSamples ;
+	--releaseCounter;
 }
 
 void FreakkGate::SetAttack()

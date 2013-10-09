@@ -16,7 +16,6 @@ public:
   double Peak(double* samples, int length);
 
 private:
-  double mGain;
   double mThreshold;
   double mAttack;
   double mRelease;
