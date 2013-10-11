@@ -3,7 +3,7 @@
 
 #include "IPlug_include_in_plug_hdr.h"
 #include "../FrkDSP/simpleSource/SimpleComp.h"
-#include "SVF.h"
+#include "Biquad.h"
 
 #define LOW 0
 #define HIGH 1
@@ -23,12 +23,13 @@ public:
   void SetFreq();
 
 private:
-  SVF *svf;
+
+  Biquad * Filter;
   double mGain;
   double mThreshold;
   double mQ;
   double mFreq, mFreqMin, mFreqMax;
-  int mType;
+  double mMix;
   double sampleRate;
   //smooth
   int status;

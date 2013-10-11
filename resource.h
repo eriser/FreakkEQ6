@@ -55,14 +55,14 @@ instrument determined by PLUG _IS _INST
 
 //#define KNOB_ID 101
 #define BG_ID                   100
-#define KNOB_THRESH_ID  101
+#define KNOB_GAIN_ID  101
 #define KNOB_Q_ID  102
 #define KNOB_FREQ_ID  103
 
 // Image resource locations for this plug.
 //#define KNOB_FN "resources/img/knob.png"
 #define BG_FN	"resources/img/FreakkWah_250.png"
-#define KNOB_THRESH_FN  "resources/img/KnobIndicator_250_3.png"
+#define KNOB_GAIN_FN  "resources/img/KnobIndicator_250_3.png"
 #define KNOB_Q_FN  "resources/img/KnobIndicator_250_3.png"
 #define KNOB_FREQ_FN  "resources/img/KnobIndicator_250_3.png"
 

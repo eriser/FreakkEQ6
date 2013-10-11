@@ -6,6 +6,7 @@
       <Filter>vst2</Filter>
     </ClCompile>
     <ClCompile Include="SVF.cpp" />
+    <ClCompile Include="Biquad.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FreakkWah.h" />
@@ -14,6 +15,7 @@
       <Filter>vst2</Filter>
     </ClInclude>
     <ClInclude Include="SVF.h" />
+    <ClInclude Include="Biquad.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="FreakkWah.rc" />
