@@ -26,7 +26,7 @@ private:
 
   Biquad * Filter;
   double mGain;
-  double mThreshold;
+  double mBoost;
   double mQ;
   double mFreq, mFreqMin, mFreqMax;
   double mMix;

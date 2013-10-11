@@ -15,7 +15,7 @@ const int kNumPrograms = 1;
 
 enum EParams
 {
-  kThreshold = 0,
+  kBoost = 0,
   kQ,
   kFreq,
   kFreqMin,
@@ -61,7 +61,6 @@ FreakkWah::FreakkWah(IPlugInstanceInfo instanceInfo)
 {
   TRACE;
   status = BYPASS;
-  mGain = BAND;
   attackSamples = 0;
   releaseSamples = 0;
   attackFactor = 1;
@@ -70,12 +69,12 @@ FreakkWah::FreakkWah(IPlugInstanceInfo instanceInfo)
   Filter = new Biquad();
 
   //arguments are: name, defaultVal, minVal, maxVal, step, label
-  GetParam(kThreshold)->InitDouble("Threshold", 50., 0.1, 100., 1., "");
-  GetParam(kQ)->InitDouble("Q", 3.5, 0.001, 5., 0.001, "");
+  GetParam(kBoost)->InitDouble("Boost", 100, 0., 200, 1.,"");
+  GetParam(kQ)->InitDouble("Q", 2.0, 0.001, 5., 0.001, "");
   GetParam(kFreq)->InitDouble("Freq", 50, 0., 100., 1., "");
-  GetParam(kFreqMin)->InitDouble("F Min", 455, 20., 2000, 1., "");
-  GetParam(kFreqMax)->InitDouble("F Max", 1821, 20., 2000, 1., "");
-  GetParam(kGain)->InitDouble("Gain", 300, 200, 600, 1, "");
+  GetParam(kFreqMin)->InitDouble("F Min", 178, 20., 2000, 1., "");
+  GetParam(kFreqMax)->InitDouble("F Max", 1600, 20., 2000, 1., "");
+  GetParam(kGain)->InitDouble("Gain", 6, -18, 18, 0.1, "");
   GetParam(kMix)->InitDouble("Mix", 91., 0., 100, 0.1, "");
 
   //MakePreset("preset 1", ... );
@@ -98,6 +97,7 @@ FreakkWah::FreakkWah(IPlugInstanceInfo instanceInfo)
   bitmap = pGraphics->LoadIBitmap(KNOB_FREQ_ID, KNOB_FREQ_FN);
   pGraphics->AttachControl(new IKnobRotaterControl(this, kFreqX, kFreqY, kFreq, &bitmap));
   AttachGraphics(pGraphics);
+
 }
 
 FreakkWah::~FreakkWah() {}
@@ -106,10 +106,10 @@ void FreakkWah::ProcessDoubleReplacing(double** inputs, double** outputs, int nF
 {
   // Mutex is already locked for us.
 
-  // double logThreshold = log10 ( abs(mThreshold) ) ; // work with decibels
+  // double logThreshold = log10 ( abs(mBoost) ) ; // work with decibels
 
 	for (int s = 0; s < nFrames; ++s) {
-		outputs[0][s] = ( inputs[0][s] * (1-mMix) + Filter->process(inputs[0][s]) * mMix ) * mGain ;
+		outputs[0][s] = ( inputs[0][s] * (1-mMix) + Filter->process(inputs[0][s]) * mMix ) * mBoost ;
 	  }
 }
 
@@ -125,33 +125,39 @@ void FreakkWah::OnParamChange(int paramIdx)
 
   switch (paramIdx)
   {
-	case kThreshold:
-      mThreshold = GetParam(kThreshold)->Value() / 100.;
+	case kBoost:
+      mBoost = GetParam(kBoost)->Value() / 100.;
       break;
+
 	case kQ:
       mQ = GetParam(kQ)->Value();
-	  //svf->SetQ(mQ);
 	  SetFreq();
       break;
+
 	case kFreq:
       mFreq = GetParam(kFreq)->Value()/100.;
 	  SetFreq();
       break;
+
 	case kFreqMin:
       mFreqMin = GetParam(kFreqMin)->Value();
 	  SetFreq();
       break;
+
 	case kFreqMax:
       mFreqMax = GetParam(kFreqMax)->Value();
 	  SetFreq();
       break;
 
 	case kGain:
-      mGain = GetParam(kGain)->Value()/100.;
+      mGain = GetParam(kGain)->Value();
+	  SetFreq();
       break;
+
 	case kMix:
       mMix = GetParam(kMix)->Value()/100.;
       break;
+
     default:
       break;
   }
@@ -169,6 +175,5 @@ double FreakkWah::Peak(double* samples, int length)
 void FreakkWah::SetFreq()
 {
 	double Fc = mFreqMin + (mFreqMax-mFreqMin)*mFreq;
-	//svf->SetFc(Fc);
-	Filter->setBiquad(bq_type_bandpass, Fc / sampleRate, mQ, 0);
+	Filter->setBiquad(bq_type_bandpass, Fc / sampleRate, mQ, mGain);
 }
