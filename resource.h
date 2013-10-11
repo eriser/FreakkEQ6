@@ -1,19 +1,19 @@
 #define PLUG_MFR "Freakk"
-#define PLUG_NAME "FreakkGate"
+#define PLUG_NAME "FreakkWah"
 
-#define PLUG_CLASS_NAME FreakkGate
+#define PLUG_CLASS_NAME FreakkWah
 
 #define BUNDLE_MFR "Freakk"
-#define BUNDLE_NAME "FreakkGate"
+#define BUNDLE_NAME "FreakkWah"
 
-#define PLUG_ENTRY FreakkGate_Entry
-#define PLUG_VIEW_ENTRY FreakkGate_ViewEntry
+#define PLUG_ENTRY FreakkWah_Entry
+#define PLUG_VIEW_ENTRY FreakkWah_ViewEntry
 
-#define PLUG_ENTRY_STR "FreakkGate_Entry"
-#define PLUG_VIEW_ENTRY_STR "FreakkGate_ViewEntry"
+#define PLUG_ENTRY_STR "FreakkWah_Entry"
+#define PLUG_VIEW_ENTRY_STR "FreakkWah_ViewEntry"
 
-#define VIEW_CLASS FreakkGate_View
-#define VIEW_CLASS_STR "FreakkGate_View"
+#define VIEW_CLASS FreakkWah_View
+#define VIEW_CLASS_STR "FreakkWah_View"
 
 // Format        0xMAJR.MN.BG - in HEX! so version 10.1.5 would be 0x000A0105
 #define PLUG_VER 0x00010000
@@ -21,7 +21,7 @@
 
 // http://service.steinberg.de/databases/plugin.nsf/plugIn?openForm
 // 4 chars, single quotes. At least one capital letter
-#define PLUG_UNIQUE_ID 'FG01'
+#define PLUG_UNIQUE_ID 'FW01'
 // make sure this is not the same as BUNDLE_MFR
 #define PLUG_MFR_ID 'KF01'
 
@@ -34,7 +34,7 @@
 #endif
 
 #define PLUG_MFR_PT "Freakk\nFreakk\nAcme"
-#define PLUG_NAME_PT "FreakkGate\nIPEF"
+#define PLUG_NAME_PT "FreakkWah\nIPEF"
 #define PLUG_TYPE_PT "Effect"
 #define PLUG_DOES_AUDIOSUITE 1
 
@@ -53,15 +53,23 @@ instrument determined by PLUG _IS _INST
 
 #define PLUG_DOES_STATE_CHUNKS 0
 
-// Unique IDs for each image resource.
-#define KNOB_ID 101
+//#define KNOB_ID 101
+#define BG_ID                   100
+#define KNOB_THRESH_ID  101
+#define KNOB_Q_ID  102
+#define KNOB_FREQ_ID  103
 
 // Image resource locations for this plug.
-#define KNOB_FN "resources/img/knob.png"
+//#define KNOB_FN "resources/img/knob.png"
+#define BG_FN	"resources/img/FreakkWah_250.png"
+#define KNOB_THRESH_FN  "resources/img/KnobIndicator_250_3.png"
+#define KNOB_Q_FN  "resources/img/KnobIndicator_250_3.png"
+#define KNOB_FREQ_FN  "resources/img/KnobIndicator_250_3.png"
 
 // GUI default dimensions
-#define GUI_WIDTH 300
-#define GUI_HEIGHT 300
+#define GUI_WIDTH 250
+#define GUI_HEIGHT 450
+
 
 // on MSVC, you must define SA_API in the resource editor preprocessor macros as well as the c++ ones
 #if defined(SA_API) && !defined(OS_IOS)

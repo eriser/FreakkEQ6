@@ -6,7 +6,7 @@ REM - zipping requires 7zip in %ProgramFiles%\7-Zip\7z.exe
 REM - building installer requires innotsetup in "%ProgramFiles(x86)%\Inno Setup 5\iscc"
 REM - AAX codesigning requires ashelper tool added to %PATH% env variable and aax.key/.crt in .\..\..\..\Certificates\
 
-echo Making FreakkGate win distribution ...
+echo Making FreakkWah win distribution ...
 
 echo ------------------------------------------------------------------
 echo Updating version numbers ...
@@ -33,15 +33,15 @@ REM - set preprocessor macros like this, for instance to enable demo build:
 REM - SET CMDLINE_DEFINES="DEMO_VERSION"
 
 REM - Could build individual targets like this:
-REM - msbuild FreakkGate-app.vcxproj /p:configuration=release /p:platform=win32
+REM - msbuild FreakkWah-app.vcxproj /p:configuration=release /p:platform=win32
 
-msbuild FreakkGate.sln /p:configuration=release /p:platform=win32 /nologo /noconsolelogger /fileLogger /v:quiet /flp:logfile=build-win.log;errorsonly 
-msbuild FreakkGate.sln /p:configuration=release /p:platform=x64 /nologo /noconsolelogger /fileLogger /v:quiet /flp:logfile=build-win.log;errorsonly;append
+msbuild FreakkWah.sln /p:configuration=release /p:platform=win32 /nologo /noconsolelogger /fileLogger /v:quiet /flp:logfile=build-win.log;errorsonly 
+msbuild FreakkWah.sln /p:configuration=release /p:platform=x64 /nologo /noconsolelogger /fileLogger /v:quiet /flp:logfile=build-win.log;errorsonly;append
 
 echo ------------------------------------------------------------------
 echo Code sign aax binary...
-call ashelper -f .\build-win\aax\bin\FreakkGate.aaxplugin\Contents\Win32\FreakkGate.aaxplugin -l .\..\..\..\Certificates\aax.crt -k .\..\..\..\Certificates\aax.key -o .\build-win\aax\bin\FreakkGate.aaxplugin\Contents\Win32\FreakkGate.aaxplugin
-REM - call ashelper -f .\build-win\aax\bin\FreakkGate.aaxplugin\Contents\x64\FreakkGate.aaxplugin -l .\..\..\..\Certificates\aax.crt -k .\..\..\..\Certificates\aax.key -o .\build-win\aax\bin\FreakkGate.aaxplugin\Contents\x64\FreakkGate.aaxplugin
+call ashelper -f .\build-win\aax\bin\FreakkWah.aaxplugin\Contents\Win32\FreakkWah.aaxplugin -l .\..\..\..\Certificates\aax.crt -k .\..\..\..\Certificates\aax.key -o .\build-win\aax\bin\FreakkWah.aaxplugin\Contents\Win32\FreakkWah.aaxplugin
+REM - call ashelper -f .\build-win\aax\bin\FreakkWah.aaxplugin\Contents\x64\FreakkWah.aaxplugin -l .\..\..\..\Certificates\aax.crt -k .\..\..\..\Certificates\aax.key -o .\build-win\aax\bin\FreakkWah.aaxplugin\Contents\x64\FreakkWah.aaxplugin
 
 REM - Make Installer (InnoSetup)
 
@@ -51,18 +51,18 @@ echo Making Installer ...
 if exist "%ProgramFiles(x86)%" (goto 64-Bit-is) else (goto 32-Bit-is)
 
 :32-Bit-is
-"%ProgramFiles%\Inno Setup 5\iscc" /cc ".\installer\FreakkGate.iss"
+"%ProgramFiles%\Inno Setup 5\iscc" /cc ".\installer\FreakkWah.iss"
 goto END-is
 
 :64-Bit-is
-"%ProgramFiles(x86)%\Inno Setup 5\iscc" /cc ".\installer\FreakkGate.iss"
+"%ProgramFiles(x86)%\Inno Setup 5\iscc" /cc ".\installer\FreakkWah.iss"
 goto END-is
 
 :END-is
 
 REM - ZIP
-REM - "%ProgramFiles%\7-Zip\7z.exe" a .\installer\FreakkGate-win-32bit.zip .\build-win\app\win32\bin\FreakkGate.exe .\build-win\vst3\win32\bin\FreakkGate.vst3 .\build-win\vst2\win32\bin\FreakkGate.dll .\build-win\rtas\bin\FreakkGate.dpm .\build-win\rtas\bin\FreakkGate.dpm.rsr .\build-win\aax\bin\FreakkGate.aaxplugin* .\installer\license.rtf .\installer\readmewin.rtf
-REM - "%ProgramFiles%\7-Zip\7z.exe" a .\installer\FreakkGate-win-64bit.zip .\build-win\app\x64\bin\FreakkGate.exe .\build-win\vst3\x64\bin\FreakkGate.vst3 .\build-win\vst2\x64\bin\FreakkGate.dll .\installer\license.rtf .\installer\readmewin.rtf
+REM - "%ProgramFiles%\7-Zip\7z.exe" a .\installer\FreakkWah-win-32bit.zip .\build-win\app\win32\bin\FreakkWah.exe .\build-win\vst3\win32\bin\FreakkWah.vst3 .\build-win\vst2\win32\bin\FreakkWah.dll .\build-win\rtas\bin\FreakkWah.dpm .\build-win\rtas\bin\FreakkWah.dpm.rsr .\build-win\aax\bin\FreakkWah.aaxplugin* .\installer\license.rtf .\installer\readmewin.rtf
+REM - "%ProgramFiles%\7-Zip\7z.exe" a .\installer\FreakkWah-win-64bit.zip .\build-win\app\x64\bin\FreakkWah.exe .\build-win\vst3\x64\bin\FreakkWah.vst3 .\build-win\vst2\x64\bin\FreakkWah.dll .\installer\license.rtf .\installer\readmewin.rtf
 
 echo ------------------------------------------------------------------
 echo Printing log file to console...
