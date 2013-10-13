@@ -80,15 +80,25 @@ FreakkEQ6::FreakkEQ6(IPlugInstanceInfo instanceInfo)
   GetParam(kGain)->InitDouble("Gain", 100., 0., 200, 0.1, "");
   GetParam(kMix)->InitDouble("Mix", 100., 0., 100, 0.1, "");
 
-  Filter = new Biquad*[NUM_BANDS]; // allocate bands
-  for(int i=0; i<NUM_BANDS ; i++)  Filter[i] = new Biquad(); // init bands
+  FilterL = new Biquad*[NUM_BANDS]; // allocate bands
+  for(int i=0; i<NUM_BANDS ; i++)  FilterL[i] = new Biquad(); // init bands
 
-  Filter[0]->setBiquad(bq_type_peak, mFreq[0] / sampleRate, mQ[0], 0);
-  Filter[1]->setBiquad(bq_type_peak, mFreq[1] / sampleRate, mQ[1], 0);
-  Filter[2]->setBiquad(bq_type_peak, mFreq[2] / sampleRate, mQ[2], 0);
-  Filter[3]->setBiquad(bq_type_peak, mFreq[3] / sampleRate, mQ[3], 0);
-  Filter[4]->setBiquad(bq_type_peak, mFreq[4] / sampleRate, mQ[4], 0);
-  Filter[5]->setBiquad(bq_type_peak, mFreq[5] / sampleRate, mQ[5], 0);
+  FilterL[0]->setBiquad(bq_type_peak, mFreq[0] / sampleRate, mQ[0], 0);
+  FilterL[1]->setBiquad(bq_type_peak, mFreq[1] / sampleRate, mQ[1], 0);
+  FilterL[2]->setBiquad(bq_type_peak, mFreq[2] / sampleRate, mQ[2], 0);
+  FilterL[3]->setBiquad(bq_type_peak, mFreq[3] / sampleRate, mQ[3], 0);
+  FilterL[4]->setBiquad(bq_type_peak, mFreq[4] / sampleRate, mQ[4], 0);
+  FilterL[5]->setBiquad(bq_type_peak, mFreq[5] / sampleRate, mQ[5], 0);
+
+  FilterR = new Biquad*[NUM_BANDS]; // allocate bands
+  for(int i=0; i<NUM_BANDS ; i++)  FilterR[i] = new Biquad(); // init bands
+
+  FilterR[0]->setBiquad(bq_type_peak, mFreq[0] / sampleRate, mQ[0], 0);
+  FilterR[1]->setBiquad(bq_type_peak, mFreq[1] / sampleRate, mQ[1], 0);
+  FilterR[2]->setBiquad(bq_type_peak, mFreq[2] / sampleRate, mQ[2], 0);
+  FilterR[3]->setBiquad(bq_type_peak, mFreq[3] / sampleRate, mQ[3], 0);
+  FilterR[4]->setBiquad(bq_type_peak, mFreq[4] / sampleRate, mQ[4], 0);
+  FilterR[5]->setBiquad(bq_type_peak, mFreq[5] / sampleRate, mQ[5], 0);
 
   //MakePreset("preset 1", ... );
   MakeDefaultPreset((char *) "-", kNumPrograms);
@@ -136,9 +146,16 @@ void FreakkEQ6::ProcessDoubleReplacing(double** inputs, double** outputs, int nF
   // Mutex is already locked for us.
 
 	for (int s = 0; s < nFrames; ++s) {
+
 		outputs[0][s] = inputs[0][s];
+		outputs[1][s] = inputs[1][s];
+
 		for(int j = 0; j < NUM_BANDS; ++j)
-			outputs[0][s] = Filter[j]->process( outputs[0][s] );
+		{
+			outputs[0][s] = FilterL[j]->process( outputs[0][s] );
+			outputs[1][s] = FilterR[j]->process( outputs[1][s] );
+		}
+
 	  }
 }
 
@@ -207,5 +224,6 @@ void FreakkEQ6::OnParamChange(int paramIdx)
 
 void FreakkEQ6::SetGain(int n)
 {
-		Filter[n]->setBiquad(bq_type_peak, mFreq[n] / sampleRate, mQ[n], mBandGain[n]);
+		FilterL[n]->setBiquad(bq_type_peak, mFreq[n] / sampleRate, mQ[n], mBandGain[n]);
+		FilterR[n]->setBiquad(bq_type_peak, mFreq[n] / sampleRate, mQ[n], mBandGain[n]);
 }

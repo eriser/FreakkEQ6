@@ -17,7 +17,8 @@ public:
 
 private:
   
-  Biquad ** Filter;
+  Biquad ** FilterL;
+  Biquad ** FilterR;
   double *mBandGain;
   double *mQ;
   double *mFreq;
