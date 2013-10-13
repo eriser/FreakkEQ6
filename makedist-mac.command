@@ -25,34 +25,34 @@ FULL_VERSION=$MAJOR_VERSION"."$MINOR_VERSION"."$BUG_FIX
 # work out the paths to the bundles
 
 VST2=`echo | grep VST_FOLDER ../../common.xcconfig`
-VST2=${VST2//\VST_FOLDER = }/FreakkWah.vst
+VST2=${VST2//\VST_FOLDER = }/FreakkEQ6.vst
 
 VST3=`echo | grep VST3_FOLDER ../../common.xcconfig`
-VST3=${VST3//\VST3_FOLDER = }/FreakkWah.vst3
+VST3=${VST3//\VST3_FOLDER = }/FreakkEQ6.vst3
 
 AU=`echo | grep AU_FOLDER ../../common.xcconfig`
-AU=${AU//\AU_FOLDER = }/FreakkWah.component
+AU=${AU//\AU_FOLDER = }/FreakkEQ6.component
 
 APP=`echo | grep APP_FOLDER ../../common.xcconfig`
-APP=${APP//\APP_FOLDER = }/FreakkWah.app
+APP=${APP//\APP_FOLDER = }/FreakkEQ6.app
 
 # Dev build folder
 RTAS=`echo | grep RTAS_FOLDER ../../common.xcconfig`
-RTAS=${RTAS//\RTAS_FOLDER = }/FreakkWah.dpm
-RTAS_FINAL="/Library/Application Support/Digidesign/Plug-Ins/FreakkWah.dpm"
+RTAS=${RTAS//\RTAS_FOLDER = }/FreakkEQ6.dpm
+RTAS_FINAL="/Library/Application Support/Digidesign/Plug-Ins/FreakkEQ6.dpm"
 
 # Dev build folder
 AAX=`echo | grep AAX_FOLDER ../../common.xcconfig`
-AAX=${AAX//\AAX_FOLDER = }/FreakkWah.aaxplugin
-AAX_FINAL="/Library/Application Support/Avid/Audio/Plug-Ins/FreakkWah.aaxplugin"
+AAX=${AAX//\AAX_FOLDER = }/FreakkEQ6.aaxplugin
+AAX_FINAL="/Library/Application Support/Avid/Audio/Plug-Ins/FreakkEQ6.aaxplugin"
 
-PKG='installer/build-mac/FreakkWah Installer.pkg'
-PKG_US='installer/build-mac/FreakkWah Installer.unsigned.pkg'
+PKG='installer/build-mac/FreakkEQ6 Installer.pkg'
+PKG_US='installer/build-mac/FreakkEQ6 Installer.unsigned.pkg'
 
 CERT_ID=`echo | grep CERTIFICATE_ID ../../common.xcconfig`
 CERT_ID=${CERT_ID//\CERTIFICATE_ID = }
 
-echo "making FreakkWah version $FULL_VERSION mac distribution..."
+echo "making FreakkEQ6 version $FULL_VERSION mac distribution..."
 echo ""
 
 #---------------------------------------------------------------------------------------------------------
@@ -116,8 +116,8 @@ fi
 #---------------------------------------------------------------------------------------------------------
 
 # build xcode project. Change target to build individual formats 
-xcodebuild -project FreakkWah.xcodeproj -xcconfig FreakkWah.xcconfig -target "All" -configuration Release 2> ./build-mac.log
-#xcodebuild -project FreakkWah-ios.xcodeproj -xcconfig FreakkWah.xcconfig -target "IOSAPP" -configuration Release
+xcodebuild -project FreakkEQ6.xcodeproj -xcconfig FreakkEQ6.xcconfig -target "All" -configuration Release 2> ./build-mac.log
+#xcodebuild -project FreakkEQ6-ios.xcodeproj -xcconfig FreakkEQ6.xcconfig -target "IOSAPP" -configuration Release
 
 if [ -s build-mac.log ]
 then
@@ -134,11 +134,11 @@ fi
 #icon stuff - http://maxao.free.fr/telechargements/setfileicon.gz
 echo "setting icons"
 echo ""
-setfileicon resources/FreakkWah.icns $AU
-setfileicon resources/FreakkWah.icns $VST2
-setfileicon resources/FreakkWah.icns $VST3
-setfileicon resources/FreakkWah.icns "${RTAS}"
-setfileicon resources/FreakkWah.icns "${AAX}"
+setfileicon resources/FreakkEQ6.icns $AU
+setfileicon resources/FreakkEQ6.icns $VST2
+setfileicon resources/FreakkEQ6.icns $VST3
+setfileicon resources/FreakkEQ6.icns "${RTAS}"
+setfileicon resources/FreakkEQ6.icns "${AAX}"
 
 #---------------------------------------------------------------------------------------------------------
 
@@ -151,20 +151,20 @@ echo "copying AAX bundle from 3PDev to main AAX folder"
 sudo cp -p -R "${AAX}" "${AAX_FINAL}"
 
 echo "code sign AAX binary"
-sudo ashelper -f "${AAX_FINAL}/Contents/MacOS/FreakkWah" -l ../../../Certificates/aax.crt -k ../../../Certificates/aax.key -o "${AAX_FINAL}/Contents/MacOS/FreakkWah"
+sudo ashelper -f "${AAX_FINAL}/Contents/MacOS/FreakkEQ6" -l ../../../Certificates/aax.crt -k ../../../Certificates/aax.key -o "${AAX_FINAL}/Contents/MacOS/FreakkEQ6"
 #---------------------------------------------------------------------------------------------------------
 
 #appstore stuff
 
 # echo "code signing app for appstore"
 # echo ""
-# codesign -f -s "3rd Party Mac Developer Application: ""${CERT_ID}" $APP --entitlements resources/FreakkWah.entitlements
+# codesign -f -s "3rd Party Mac Developer Application: ""${CERT_ID}" $APP --entitlements resources/FreakkEQ6.entitlements
 #  
 # echo "building pkg for app store"
 # productbuild \
 #      --component $APP /Applications \
 #      --sign "3rd Party Mac Developer Installer: ""${CERT_ID}" \
-#      --product "/Applications/FreakkWah.app/Contents/Info.plist" installer/FreakkWah.pkg
+#      --product "/Applications/FreakkEQ6.app/Contents/Info.plist" installer/FreakkEQ6.pkg
 
 #---------------------------------------------------------------------------------------------------------
 
@@ -177,11 +177,11 @@ sudo ashelper -f "${AAX_FINAL}/Contents/MacOS/FreakkWah" -l ../../../Certificate
 #---------------------------------------------------------------------------------------------------------
 
 # installer, uses Packages http://s.sudre.free.fr/Software/Packages/about.html
-sudo sudo rm -R -f installer/FreakkWah-mac.dmg
+sudo sudo rm -R -f installer/FreakkEQ6-mac.dmg
 
 echo "building installer"
 echo ""
-packagesbuild installer/FreakkWah.pkgproj
+packagesbuild installer/FreakkEQ6.pkgproj
 
 #echo "code sign installer for Gatekeeper on 10.8"
 #echo ""
@@ -191,7 +191,7 @@ packagesbuild installer/FreakkWah.pkgproj
 #rm -R -f "${PKG_US}"
 
 #set installer icon
-setfileicon resources/FreakkWah.icns "${PKG}"
+setfileicon resources/FreakkEQ6.icns "${PKG}"
 
 #---------------------------------------------------------------------------------------------------------
 
@@ -200,19 +200,19 @@ setfileicon resources/FreakkWah.icns "${PKG}"
 echo "building dmg"
 echo ""
 
-if [ -d installer/FreakkWah.dmgCanvas ]
+if [ -d installer/FreakkEQ6.dmgCanvas ]
 then
-  dmgcanvas installer/FreakkWah.dmgCanvas installer/FreakkWah-mac.dmg
+  dmgcanvas installer/FreakkEQ6.dmgCanvas installer/FreakkEQ6-mac.dmg
 else
-  hdiutil create installer/FreakkWah.dmg -srcfolder installer/build-mac/ -ov -anyowners -volname FreakkWah
+  hdiutil create installer/FreakkEQ6.dmg -srcfolder installer/build-mac/ -ov -anyowners -volname FreakkEQ6
   
-  if [ -f installer/FreakkWah-mac.dmg ]
+  if [ -f installer/FreakkEQ6-mac.dmg ]
   then
-   rm -f installer/FreakkWah-mac.dmg
+   rm -f installer/FreakkEQ6-mac.dmg
   fi
   
-  hdiutil convert installer/FreakkWah.dmg -format UDZO -o installer/FreakkWah-mac.dmg
-  sudo rm -R -f installer/FreakkWah.dmg
+  hdiutil convert installer/FreakkEQ6.dmg -format UDZO -o installer/FreakkEQ6-mac.dmg
+  sudo rm -R -f installer/FreakkEQ6.dmg
 fi
 
 sudo rm -R -f installer/build-mac/
@@ -222,16 +222,16 @@ sudo rm -R -f installer/build-mac/
 
 # echo "copying binaries..."
 # echo ""
-# cp -R $AU installer/dist/FreakkWah.component
-# cp -R $VST2 installer/dist/FreakkWah.vst
-# cp -R $VST3 installer/dist/FreakkWah.vst3
-# cp -R $RTAS installer/dist/FreakkWah.dpm
-# cp -R $AAX installer/dist/FreakkWah.aaxplugin
-# cp -R $APP installer/dist/FreakkWah.app
+# cp -R $AU installer/dist/FreakkEQ6.component
+# cp -R $VST2 installer/dist/FreakkEQ6.vst
+# cp -R $VST3 installer/dist/FreakkEQ6.vst3
+# cp -R $RTAS installer/dist/FreakkEQ6.dpm
+# cp -R $AAX installer/dist/FreakkEQ6.aaxplugin
+# cp -R $APP installer/dist/FreakkEQ6.app
 # 
 # echo "zipping binaries..."
 # echo ""
-# ditto -c -k installer/dist installer/FreakkWah-mac.zip
+# ditto -c -k installer/dist installer/FreakkEQ6-mac.zip
 # rm -R installer/dist
 
 #---------------------------------------------------------------------------------------------------------

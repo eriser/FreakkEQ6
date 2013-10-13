@@ -12,9 +12,9 @@
 
  App settings are stored in a .ini file. The location is as follows:
 
- Windows7: C:\Users\USERNAME\AppData\Local\FreakkWah\settings.ini
- Windows XP/Vista: C:\Documents and Settings\USERNAME\Local Settings\Application Data\FreakkWah\settings.ini
- OSX: /Users/USERNAME/Library/Application\ Support/FreakkWah/settings.ini
+ Windows7: C:\Users\USERNAME\AppData\Local\FreakkEQ6\settings.ini
+ Windows XP/Vista: C:\Documents and Settings\USERNAME\Local Settings\Application Data\FreakkEQ6\settings.ini
+ OSX: /Users/USERNAME/Library/Application\ Support/FreakkEQ6/settings.ini
 
 */
 
@@ -44,7 +44,7 @@
 #include <string>
 #include <vector>
 
-#include "../FreakkWah.h" // change this to match your iplug plugin .h file
+#include "../FreakkEQ6.h" // change this to match your iplug plugin .h file
 
 typedef unsigned short UInt16;
 
