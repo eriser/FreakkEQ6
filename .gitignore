@@ -1,4 +1,4 @@
-*.exe
+resources/ *.exe
 *.sdf
 *.opensdf
 *.zip
